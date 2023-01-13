@@ -1,36 +1,19 @@
-import random as r
-# MountainList = [["Sniezka", 1602], ["Babia Gora", 1725], ["Snieznik", 1423], ["Giewont", 1895], ["Rysy", 2499], ["Kasprowy Wierch", 1987], ["Koscielec", 2155]]
-MountainListFromFile = []
 
-filepath = "MountainsList.txt"
-f = open(filepath, "r")
-MountainList = f.readlines()
-print(MountainList)
+import game as g
 
-for i in MountainList:
-    i=i[:-1]
-    MountainListFromFile.append(i.split(","))
+import settings as s
 
-counter = 0
-for i in MountainListFromFile:
-    MountainListFromFile[counter][1] = int(i[1])
-    counter += 1
-print(MountainListFromFile)
+def menu():
 
-points = 0
-totalLife = 3
-life = 3
-
-for i in MountainListFromFile:
-    RandomValue = r.randrange(0, len(MountainListFromFile)-1)
-    AskUser = (input("(Current points:" + str(points) + " , life availability: " + str(life) + "/" + str(totalLife) +") " + " What is the high of " + MountainListFromFile[RandomValue][0] + "?"))
-
-    if int(AskUser) == MountainListFromFile[RandomValue][1]:
-        print("Good answer")
-        points += 1
+    AskUser = input("Decide if you would like to play game or change the database. Press 1 to play, press 2 to manage settings, press 0 to exit: ")
+    if int(AskUser) == 1:
+        g.game()
+    elif int(AskUser) == 2:
+        s.settings()
+    elif int(AskUser) == 0:
+        return 0
     else:
-        life -= 1
-        print("Wrong answer")
-        if life == 0:
-            print("Game is over")
-            break
+        print("Choose 0, 1 or 2")
+
+menu()
+
