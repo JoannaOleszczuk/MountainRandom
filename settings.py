@@ -39,21 +39,28 @@ def settings():
                 continue
 
     elif int(AskUser) == 2:
-        AskForRemoving = input("Type the Mountain to remove it from game: ")
-        tmp = LoadFile(DB_FILE_NAME)
+        while True:
+            AskForRemoving = input("Type the Mountain to remove it from game: ")
+            tmp = LoadFile(DB_FILE_NAME)
 
-        counter = 0
-        for i in tmp:
-            if AskForRemoving == i[0]:
-                tmp.pop(counter)
-            counter +=1
-        print("Updated list: " , tmp)
-        filepath = DB_FILE_NAME
-        f = open(filepath, "w")
+            counter = 0
+            MountainList2 = []
+            for i in tmp:
+                if AskForRemoving != i[0]:
+                    i[1] = str(i[1]) + "\n"
+                    MountainList2.append(",".join(i))
+                    counter +=1
+            print("Updated list: " , MountainList2)
+            filepath = DB_FILE_NAME
+            f = open(filepath, "w")
+            f.writelines(MountainList2)
+            f.close()
 
-        f.write(tmp)
-        f.close()
-
+            decision = input("Press 0 to exit or 1 to continue: ")
+            if int(decision) == 0:
+                break
+            elif int(decision) == 1:
+                continue
 
     elif int(AskUser) == 3:
         print(LoadFile(DB_FILE_NAME))

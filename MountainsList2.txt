@@ -1,5 +1,1 @@
-Sniezka, 1602
-Babia Gora, 1725
-Snieznik, 1423
-Giewont, 1895
-Rysy, 2499
+Babia Gora,1725Giewont,1895Kasprowy Wierch,1987Koscielec,2155Skrzyczne,1257Wielka Sowa,1015
